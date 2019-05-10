@@ -19,6 +19,7 @@ import retrofit2.Response;
  */
 public class BarchartSdk {
 
+    private static final String TAG = "BarchartSdk";
 
     /**
      * Barchart instance
@@ -52,19 +53,27 @@ public class BarchartSdk {
             public void onResponse(Call<Barchart> call, Response<Barchart> response) {
 
                 if (response.body() == null) {
-                    Log.e("Barchart", "Response body not initialized");
+                    Log.e(TAG, "Response Success, response body not initialized");
                     callback.onResultSuccess(new ArrayList<BarchartResult>());
                     return;
                 }
 
                 ArrayList<BarchartResult> results = (ArrayList<BarchartResult>) response.body().getResults();
-                Log.d("Barchart", "Response Success, results size = " + results.size());
+
+                if (results == null) {
+                    results = new ArrayList<>();
+                    Log.e(TAG, "Response Success, empty results list");
+                    callback.onResultSuccess(results);
+                    return;
+                }
+
+                Log.d(TAG, "Response Success, results size = " + results.size());
                 callback.onResultSuccess(results);
             }
 
             @Override
             public void onFailure(Call<Barchart> call, Throwable error) {
-                Log.e("Barchart", "Response Failed, Error = " + error.getMessage());
+                Log.e(TAG, "Response Failed, Error = " + error.getMessage());
                 callback.onResultFailed(error.getMessage());
             }
         });

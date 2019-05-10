@@ -67,7 +67,7 @@ public class BarchartResult {
 
     @SerializedName("close")
     @Expose
-    private Object close;
+    private Double close;
 
     @SerializedName("flag")
     @Expose
@@ -149,7 +149,7 @@ public class BarchartResult {
         return low;
     }
 
-    public Object getClose() {
+    public Double getClose() {
         return close;
     }
 

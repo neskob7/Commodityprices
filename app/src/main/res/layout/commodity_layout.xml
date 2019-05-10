@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:padding="10dp"
+    android:background="#3f3f44"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:textColor="#e3e3e8"
+        android:textSize="16sp"
+        tools:text="TEST NAME" />
+
+    <TextView
+        android:id="@+id/lastPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
+        android:textColor="#e3e3e8"
+        android:textSize="16sp"
+        tools:text="TEST LAST PRICE" />
+
+    <TextView
+        android:id="@+id/priceOpen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:textColor="#e3e3e8"
+        android:textSize="16sp"
+        tools:text="TEST OPEN" />
+
+    <TextView
+        android:id="@+id/priceClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/priceOpen"
+        android:layout_alignParentEnd="true"
+        android:textColor="#e3e3e8"
+        android:textSize="16sp"
+        tools:text="TEST CLOSE" />
+</RelativeLayout>
+

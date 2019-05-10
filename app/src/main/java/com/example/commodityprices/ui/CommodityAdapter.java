@@ -30,7 +30,7 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
     @Override
     public CommodityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View view = (View) LayoutInflater.from(context).inflate(R.layout.text_view_layout,
+        View view = (View) LayoutInflater.from(context).inflate(R.layout.commodity_layout,
                 viewGroup, false);
 
         final CommodityViewHolder commodityViewHolder = new CommodityViewHolder(view);
@@ -54,7 +54,11 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
     public void onBindViewHolder(@NonNull CommodityViewHolder viewHolder, int position) {
         Commodity commodity = commodities.get(position);
         viewHolder.name.setText(commodity.getName());
-        viewHolder.description.setText(commodity.getDescription());
+        viewHolder.lastPrice.setText(context.getString(R.string.last_price) + commodity.getLastPrice());
+        viewHolder.priceOpen.setText("Open " + commodity.getPriceOpen());
+        viewHolder.priceClose.setText("Close " + commodity.getPriceClose());
+
+        //TODO add price close and open
     }
 
     @Override
@@ -64,17 +68,22 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
 
     public static class CommodityViewHolder extends RecyclerView.ViewHolder {
 
-        TextView name;
-        TextView description;
-        RelativeLayout rootView;
+        private TextView name;
+        private TextView lastPrice;
+        private RelativeLayout rootView;
+        private TextView priceOpen;
+        private TextView priceClose;
+
 
 
         public CommodityViewHolder(@NonNull View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
-            description = itemView.findViewById(R.id.description);
+            lastPrice = itemView.findViewById(R.id.lastPrice);
             rootView = itemView.findViewById(R.id.root_view);
+            priceClose = itemView.findViewById(R.id.priceClose);
+            priceOpen = itemView.findViewById(R.id.priceOpen);
         }
     }
 

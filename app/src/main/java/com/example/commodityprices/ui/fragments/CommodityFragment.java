@@ -50,11 +50,16 @@ public class CommodityFragment extends Fragment {
         commodityAdapter = new CommodityAdapter(getContext());
         recyclerView.setAdapter(commodityAdapter);
 
+        //TODO Programmatically change visibility
+        //Hint setVisibility(View.VISIBLE);
+
+
         requestResults();
 
         commodityAdapter.setCommodityListener(new CommodityAdapter.CommodityListener() {
             @Override
             public void onItemClick(int position) {
+                //TODO Open Extended details info
                 Log.d(TAG, "onItemClick: NAME " + commodities.get(position).getName());
             }
         });
@@ -73,21 +78,29 @@ public class CommodityFragment extends Fragment {
                     @Override
                     public void onResultSuccess(ArrayList<BarchartResult> data) {
 
+                        //TODO Handle no results, Show No data text view -> data.size() = 0
+
                         //Counts results
                         int loadingCount = 0;
 
-                        //TODO Populate array list of barchart results
+                        // Populate array list of barchart results
                         for (BarchartResult barchart : data) {
                             Log.d("Barchart UI", "Name = " + barchart.getName() + " Last price = " + barchart.getLastPrice()
                                     + " FIELDS " + barchart.getFiftyTwoWkHigh());
 
-                            Commodity commodity = new Commodity(barchart.getName(), String.valueOf(barchart.getLastPrice()));
+                            Commodity commodity = new Commodity(
+                                    barchart.getName(),
+                                    String.valueOf(barchart.getLastPrice()),
+                                    String.valueOf(barchart.getOpen()),
+                                    String.valueOf(barchart.getClose())
+                            );
 
                             synchronized (commodityLock) {
                                 loadingCount++;
                                 commodities.add(commodity);
                             }
 
+                            //All data loaded for sure
                             if (loadingCount == data.size()) {
                                 //TODO: Show UI Data via Recycler view
                                 commodityAdapter.refreshData(commodities);

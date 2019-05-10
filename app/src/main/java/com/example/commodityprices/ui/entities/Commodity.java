@@ -3,19 +3,31 @@ package com.example.commodityprices.ui.entities;
 public class Commodity {
 
     private String name;
-    private String description;
+    private String lastPrice;
+    private String priceOpen;
+    private String priceClose;
 
-    public Commodity(String name, String description) {
+    public Commodity(String name, String lastPrice, String priceOpen, String priceClose) {
         this.name = name;
-        this.description = description;
+        this.lastPrice = lastPrice;
+        this.priceOpen = priceOpen;
+        this.priceClose = priceClose;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getLastPrice() {
+        return lastPrice;
+    }
+
+    public String getPriceOpen() {
+        return priceOpen;
+    }
+
+    public String getPriceClose() {
+        return priceClose;
     }
 
 }
