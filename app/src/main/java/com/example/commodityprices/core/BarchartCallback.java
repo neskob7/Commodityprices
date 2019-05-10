@@ -4,7 +4,7 @@ package com.example.commodityprices.core;
  * Barchart Callback
  *
  * @param <T> callback data
- * @author Nesko Mandic
+ * @author Commodity Mandic
  */
 public interface BarchartCallback<T extends Object> {
 

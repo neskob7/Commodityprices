@@ -5,20 +5,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.commodityprices.R;
-import com.example.commodityprices.core.BarchartCallback;
-import com.example.commodityprices.core.BarchartSdk;
-import com.example.commodityprices.core.entities.BarchartResult;
-import com.example.commodityprices.ui.entities.Nesko;
 import com.example.commodityprices.ui.fragments.CommodityFragment;
 import com.example.commodityprices.ui.fragments.ExchangeFragment;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean isCommodityCreated = false;
     private boolean isExchangeCreated = false;
-
 
 
     @Override
@@ -86,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
 }

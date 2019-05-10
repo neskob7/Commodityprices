@@ -1,6 +1,5 @@
 package com.example.commodityprices.ui.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,17 +8,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.commodityprices.R;
 import com.example.commodityprices.core.BarchartCallback;
 import com.example.commodityprices.core.BarchartSdk;
-import com.example.commodityprices.core.entities.Barchart;
 import com.example.commodityprices.core.entities.BarchartResult;
 import com.example.commodityprices.ui.CommodityAdapter;
-import com.example.commodityprices.ui.MainActivity;
-import com.example.commodityprices.ui.entities.Nesko;
+import com.example.commodityprices.ui.entities.Commodity;
 
 import java.util.ArrayList;
 
@@ -34,19 +29,13 @@ public class CommodityFragment extends Fragment {
     /**
      * Array list of barchart results
      */
-    private ArrayList<Nesko> results = new ArrayList<>();
+    private ArrayList<Commodity> commodities = new ArrayList<>();
 
     /**
-     * Synchronized lock for results
+     * Synchronized lock for commodity results
      */
-    private final Object resultLock = new Object();
+    private final Object commodityLock = new Object();
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-
-
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,21 +55,11 @@ public class CommodityFragment extends Fragment {
         commodityAdapter.setCommodityListener(new CommodityAdapter.CommodityListener() {
             @Override
             public void onItemClick(int position) {
-                Log.d(TAG, "onItemClick: NAME " + results.get(position).getName());
+                Log.d(TAG, "onItemClick: NAME " + commodities.get(position).getName());
             }
         });
 
         return view;
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
     //TODO: Probaj novu klasu za cuvanje UI podataka
@@ -102,18 +81,18 @@ public class CommodityFragment extends Fragment {
                             Log.d("Barchart UI", "Name = " + barchart.getName() + " Last price = " + barchart.getLastPrice()
                                     + " FIELDS " + barchart.getFiftyTwoWkHigh());
 
-                            Nesko result = new Nesko(barchart.getName(), String.valueOf(barchart.getLastPrice()));
+                            Commodity commodity = new Commodity(barchart.getName(), String.valueOf(barchart.getLastPrice()));
 
-                            synchronized (resultLock) {
+                            synchronized (commodityLock) {
                                 loadingCount++;
-                                results.add(result);
+                                commodities.add(commodity);
                             }
 
                             if (loadingCount == data.size()) {
                                 //TODO: Show UI Data via Recycler view
-                                commodityAdapter.refreshResults(results);
+                                commodityAdapter.refreshData(commodities);
                                 Log.d("Barchart UI", "All results Loaded = " + loadingCount
-                                        + " : " + results.size());
+                                        + " : " + commodities.size());
 
                             }
                         }

@@ -1,11 +1,11 @@
 package com.example.commodityprices.ui.entities;
 
-public class Nesko {
+public class Commodity {
 
     private String name;
     private String description;
 
-    public Nesko(String name, String description) {
+    public Commodity(String name, String description) {
         this.name = name;
         this.description = description;
     }

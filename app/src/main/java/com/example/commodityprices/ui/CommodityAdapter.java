@@ -7,20 +7,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.commodityprices.R;
-import com.example.commodityprices.ui.entities.Nesko;
+import com.example.commodityprices.ui.entities.Commodity;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.CommodityViewHolder> {
 
     private Context context;
-    private ArrayList<Nesko> results = new ArrayList<>();
+    private ArrayList<Commodity> commodities = new ArrayList<>();
     private static final String TAG = "CommodityAdapter";
     private CommodityListener commodityListener;
 
@@ -43,7 +41,7 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: POSITION: " + commodityViewHolder.getAdapterPosition());
-                if(commodityListener !=null) {
+                if (commodityListener != null) {
                     commodityListener.onItemClick(commodityViewHolder.getAdapterPosition());
                 }
             }
@@ -54,16 +52,15 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
 
     @Override
     public void onBindViewHolder(@NonNull CommodityViewHolder viewHolder, int position) {
-        Nesko result = results.get(position);
-        viewHolder.name.setText(result.getName());
-        viewHolder.description.setText(result.getDescription());
+        Commodity commodity = commodities.get(position);
+        viewHolder.name.setText(commodity.getName());
+        viewHolder.description.setText(commodity.getDescription());
     }
 
     @Override
     public int getItemCount() {
-        return results.size();
+        return commodities.size();
     }
-
 
     public static class CommodityViewHolder extends RecyclerView.ViewHolder {
 
@@ -73,20 +70,16 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
 
 
         public CommodityViewHolder(@NonNull View itemView) {
-
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
             description = itemView.findViewById(R.id.description);
             rootView = itemView.findViewById(R.id.root_view);
-
         }
     }
 
-    public void refreshResults(ArrayList<Nesko> results) {
-
-
-        this.results = results;
+    public void refreshData(ArrayList<Commodity> items) {
+        this.commodities = items;
         notifyDataSetChanged();
     }
 
