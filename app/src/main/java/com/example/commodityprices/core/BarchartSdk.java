@@ -44,9 +44,9 @@ public class BarchartSdk {
 
 
     public void getResults(final BarchartCallback<ArrayList<BarchartResult>> callback) {
-        //Todo Temporary Retrofit test
-        BarchartApiEndpoint service = RetrofitService.getRetrofitInstance().create(BarchartApiEndpoint.class);
-        Call<Barchart> callable = service.getResults(Constants.API_KEY, Constants.SYMBOLS, Constants.FIELDS);
+
+        BarchartApiEndpoint service = RetrofitService.getRetrofitInstance(Constants.BASE_URL_BARCHART).create(BarchartApiEndpoint.class);
+        Call<Barchart> callable = service.getResults(Constants.API_KEY_BARCHART, Constants.SYMBOLS_BARCHART, Constants.FIELDS_BARCHART);
 
         callable.enqueue(new Callback<Barchart>() {
             @Override

@@ -1,6 +1,10 @@
 package com.example.commodityprices.ui.entities;
 
-public class Commodity {
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.util.Log;
+
+public class Commodity implements Parcelable {
 
     private String name;
     private String lastPrice;
@@ -29,6 +33,34 @@ public class Commodity {
     }
 
 
+    protected Commodity(Parcel in) {
+        name = in.readString();
+        lastPrice = in.readString();
+        priceOpen = in.readString();
+        priceClose = in.readString();
+        symbol = in.readString();
+        priceLow = in.readString();
+        priceHigh = in.readString();
+        netChange = in.readString();
+        volume = in.readString();
+        yearHigh = in.readString();
+
+        Log.d("PARCEL", "Commodity name  = " + name);
+    }
+
+    public static final Creator<Commodity> CREATOR = new Creator<Commodity>() {
+        @Override
+        public Commodity createFromParcel(Parcel in) {
+
+            Log.d("PARCEL", "CREATOR Parcel in = " + in);
+            return new Commodity(in);
+        }
+
+        @Override
+        public Commodity[] newArray(int size) {
+            return new Commodity[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -68,6 +100,28 @@ public class Commodity {
 
     public String getYearHigh() {
         return yearHigh;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(lastPrice);
+        dest.writeString(priceOpen);
+        dest.writeString(priceClose);
+        dest.writeString(symbol);
+        dest.writeString(priceLow);
+        dest.writeString(priceHigh);
+        dest.writeString(netChange);
+        dest.writeString(volume);
+        dest.writeString(yearHigh);
+
+        Log.d("PARCEL", "writeToParcel dest = " + dest);
     }
 
 

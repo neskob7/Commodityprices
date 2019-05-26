@@ -5,20 +5,25 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.commodityprices.R;
 import com.example.commodityprices.ui.fragments.CommodityFragment;
-import com.example.commodityprices.ui.fragments.ExchangeFragment;
+import com.example.commodityprices.ui.fragments.CurrencyFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonCommodity;
-    private Button buttonExchange;
+    private Button buttonCurrency;
 
-    private boolean isCommodityCreated = false;
-    private boolean isExchangeCreated = false;
+    private enum Selection {
+        COMMODITY,
+        CURRENCY
+    }
+
+    private Selection active;
 
 
     @Override
@@ -27,30 +32,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         buttonCommodity = findViewById(R.id.btnCommodity);
-        buttonExchange = findViewById(R.id.btnExchange);
+        buttonCurrency = findViewById(R.id.btnCurrency);
 
-        updateView(new CommodityFragment());
-        isCommodityCreated = true;
+        // default fragment
+        updateView(Selection.COMMODITY);
 
         buttonCommodity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (!isCommodityCreated) {
-                    updateView(new CommodityFragment());
-                    isCommodityCreated = true;
-                    isExchangeCreated = false;
+                if (active != Selection.COMMODITY) {
+                    updateView(Selection.COMMODITY);
                 }
             }
         });
 
-        buttonExchange.setOnClickListener(new View.OnClickListener() {
+        buttonCurrency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isExchangeCreated) {
-                    updateView(new ExchangeFragment());
-                    isExchangeCreated = true;
-                    isCommodityCreated = false;
+                if (active != Selection.CURRENCY) {
+                    updateView(Selection.CURRENCY);
                 }
             }
         });
@@ -59,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Update fragment view
+     * Open fragment view
      *
-     * @param fragment fragment to update
+     * @param fragment fragment to open
      */
-    private void updateView(final Fragment fragment) {
+    private void openFragment(final Fragment fragment) {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -78,5 +78,39 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void updateView(Selection selection) {
+        this.active = selection;
+        Log.d("UpdateView", "Current active selection = " + selection);
 
+        //todo openFragment(new CommodityFragment());
+
+        switch (selection) {
+            case COMMODITY:
+                openFragment(new CommodityFragment());
+                break;
+            case CURRENCY:
+                openFragment(new CurrencyFragment());
+                break;
+            default:
+                Log.w("UpdateView", "Active selection not supported " + selection);
+                break;
+        }
+
+        buttonBackground(selection);
+    }
+
+    private void buttonBackground(Selection selection) {
+        switch (selection) {
+            case COMMODITY:
+                buttonCommodity.setBackgroundResource(R.drawable.pressed_state);
+                buttonCurrency.setBackgroundResource(R.drawable.default_state);
+                break;
+            case CURRENCY:
+                buttonCurrency.setBackgroundResource(R.drawable.pressed_state);
+                buttonCommodity.setBackgroundResource(R.drawable.default_state);
+                break;
+            default:
+                break;
+        }
+    }
 }

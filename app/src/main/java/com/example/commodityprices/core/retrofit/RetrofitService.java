@@ -12,11 +12,17 @@ public class RetrofitService {
     private static final String TAG = "RetrofitService";
     private static Retrofit retrofit;
 
-    public static Retrofit getRetrofitInstance() {
+    /**
+     * Get retrofit instance
+     *
+     * @param endpoint base url endpoint
+     * @return retrofit
+     */
+    public static Retrofit getRetrofitInstance(String endpoint) {
 
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(Constants.BASE_URL)
+                    .baseUrl(endpoint)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

@@ -8,20 +8,22 @@
     tools:context=".ui.fragments.CommodityFragment">
 
 
-    <!--TODO Add Layout, visibility Gone-->
-    <!--<RelativeLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:visibility="gone">-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+    </RelativeLayout>
 
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/progress_bar"
-            android:layout_centerInParent="true"
+            android:indeterminateTintMode="src_atop"
+            android:indeterminateTint="#e3e3e8"
+            android:layout_centerInParent="true" />
 
-            />
-    <!--</RelativeLayout>-->
+
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"

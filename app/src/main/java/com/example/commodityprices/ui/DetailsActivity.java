@@ -1,16 +1,73 @@
 package com.example.commodityprices.ui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.example.commodityprices.R;
+import com.example.commodityprices.ui.entities.Commodity;
 
 public class DetailsActivity extends AppCompatActivity {
+
+    private static final String TAG = "DetailsActivity";
+    private TextView tvName;
+    private TextView tvSymbol;
+    private TextView tvLastPrice;
+    private TextView tvNetChange;
+    private TextView tvPriceOpen;
+    private TextView tvPriceClose;
+    private TextView tvVolume;
+
+    private String priceUnits;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+
+        tvName = findViewById(R.id.name);
+        tvSymbol = findViewById(R.id.symbol);
+        tvLastPrice = findViewById(R.id.lastPrice);
+        tvNetChange = findViewById(R.id.netChange);
+        tvPriceOpen = findViewById(R.id.priceOpen);
+        tvPriceClose = findViewById(R.id.priceClose);
+        tvVolume = findViewById(R.id.volume);
+
+
+
+        Bundle data = getIntent().getExtras();
+        Log.d(TAG, "onCreate DATA BUNDLE : " + data);
+
+        if (data != null) {
+            Commodity commodity = data.getParcelable("commodity");
+
+            if (commodity != null) {
+
+                if(commodity.getName() == "Corn") {
+                    priceUnits = "c/bu";
+                }
+
+                tvName.setText("Commodity: " + commodity.getName());
+                tvSymbol.setText("Cbot symbol: " + commodity.getSymbol());
+                tvLastPrice.setText("Last price: " + commodity.getLastPrice() + " " + priceUnits);
+                tvNetChange.setText("Net change: " + commodity.getNetChange());
+                tvPriceOpen.setText("Price open: " + commodity.getPriceOpen());
+                tvPriceClose.setText("Price close: " + commodity.getPriceClose());
+                tvVolume.setText("Volume: " + commodity.getVolume());
+
+                Log.d(TAG, "onCreate:  Commodity object " + commodity.getSymbol() + " " + commodity.getName());
+            } else {
+                Log.d(TAG, "onCreate: Commodity object not created");
+//                VISIBLE NO DATA
+            }
+
+
+        } else {
+            Log.e(TAG, "onCreate: BUNDLE ERROR - NO DATA " + data);
+//            VISIBLE NO DATA
+        }
 
 
     }

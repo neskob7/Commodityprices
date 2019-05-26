@@ -28,6 +28,7 @@ public class CommodityFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private CommodityAdapter commodityAdapter;
+
     private ProgressBar progressBar;
 
     /**
@@ -46,10 +47,11 @@ public class CommodityFragment extends Fragment {
         Log.d(TAG, "CommodityFragment created");
         View view = inflater.inflate(R.layout.fragment_commodity, container, false);
 
-        progressBar = view.findViewById(R.id.progress_bar);
         recyclerView = view.findViewById(R.id.recyclerview);
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
+        progressBar = view.findViewById(R.id.progress_bar);
+
 
         commodityAdapter = new CommodityAdapter(getContext());
         recyclerView.setAdapter(commodityAdapter);
@@ -68,7 +70,7 @@ public class CommodityFragment extends Fragment {
                 //TODO Open Extended details info
 
                 Intent intent = new Intent(getActivity(), DetailsActivity.class);
-                // intent.putExtra("position", commodities.get(position));
+                intent.putExtra("commodity", commodities.get(position));
                 startActivity(intent);
 
 
@@ -90,7 +92,10 @@ public class CommodityFragment extends Fragment {
                     @Override
                     public void onResultSuccess(ArrayList<BarchartResult> data) {
 
-                        //TODO Handle no results, Show No data text view -> data.size() = 0
+                        if (data.size() == 0) {
+                            //TODO Handle no results, Show No data text view -> data.size() = 0
+                            return;
+                        }
 
                         //Counts results
                         int loadingCount = 0;
@@ -116,7 +121,7 @@ public class CommodityFragment extends Fragment {
                             );
 
                             Log.d(TAG, "onResultSuccess: Commodity object created" +
-                                    commodity.getName() + " " + commodity.getSymbol()+ " " +
+                                    commodity.getName() + " " + commodity.getSymbol() + " " +
                                     commodity.getPriceLow() + " " + commodity.getYearHigh());
 
                             synchronized (commodityLock) {
@@ -128,7 +133,7 @@ public class CommodityFragment extends Fragment {
                             if (loadingCount == data.size()) {
 
                                 progressBar.setVisibility(View.GONE);
-                                //TODO: Show UI Data via Recycler view
+                                //Show UI Data via Recycler view
                                 commodityAdapter.refreshData(commodities);
                                 Log.d("PROGRES ", "onCreateView: END " + System.currentTimeMillis());
 
@@ -143,16 +148,10 @@ public class CommodityFragment extends Fragment {
                     public void onResultFailed(String error) {
                         Log.e("Barchart UI", "ERROR = " + error);
                         //TODO Handle UI error, Show No data text view
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }
         }).start();
-    }
-
-    @Override
-    public void onResume() {
-
-
-        super.onResume();
     }
 }
