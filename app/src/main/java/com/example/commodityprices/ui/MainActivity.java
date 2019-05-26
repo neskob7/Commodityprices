@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         buttonCurrency = findViewById(R.id.btnCurrency);
 
         // default fragment
+        //TODO ON ROTATE SAVE PREVIOUS ACTIVE VIEW
         updateView(Selection.COMMODITY);
 
         buttonCommodity.setOnClickListener(new View.OnClickListener() {

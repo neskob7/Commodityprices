@@ -15,35 +15,35 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Barchart SDK Singleton Helper
+ * Commodity SDK Singleton Helper
  */
-public class BarchartSdk {
+public class CommoditySdk {
 
-    private static final String TAG = "BarchartSdk";
+    private static final String TAG = "CommoditySdk";
 
     /**
      * Barchart instance
      */
-    private static BarchartSdk instance = null;
+    private static CommoditySdk instance = null;
 
     /**
      * Get barchart instance
      *
      * @return instance
      */
-    public static BarchartSdk getInstance() {
+    public static CommoditySdk getInstance() {
         if (instance == null) {
-            instance = new BarchartSdk();
+            instance = new CommoditySdk();
         }
         return instance;
     }
 
-    private BarchartSdk() {
+    private CommoditySdk() {
 
     }
 
 
-    public void getResults(final BarchartCallback<ArrayList<BarchartResult>> callback) {
+    public void getBarchartResults(final AsyncCallback<ArrayList<BarchartResult>> callback) {
 
         BarchartApiEndpoint service = RetrofitService.getRetrofitInstance(Constants.BASE_URL_BARCHART).create(BarchartApiEndpoint.class);
         Call<Barchart> callable = service.getResults(Constants.API_KEY_BARCHART, Constants.SYMBOLS_BARCHART, Constants.FIELDS_BARCHART);
@@ -54,7 +54,7 @@ public class BarchartSdk {
 
                 if (response.body() == null) {
                     Log.e(TAG, "Response Success, response body not initialized");
-                    callback.onResultSuccess(new ArrayList<BarchartResult>());
+                    callback.onReceive(new ArrayList<BarchartResult>());
                     return;
                 }
 
@@ -63,18 +63,18 @@ public class BarchartSdk {
                 if (results == null) {
                     results = new ArrayList<>();
                     Log.e(TAG, "Response Success, empty results list");
-                    callback.onResultSuccess(results);
+                    callback.onReceive(results);
                     return;
                 }
 
                 Log.d(TAG, "Response Success, results size = " + results.size());
-                callback.onResultSuccess(results);
+                callback.onReceive(results);
             }
 
             @Override
             public void onFailure(Call<Barchart> call, Throwable error) {
                 Log.e(TAG, "Response Failed, Error = " + error.getMessage());
-                callback.onResultFailed(error.getMessage());
+                callback.onFailed(error.getMessage());
             }
         });
     }

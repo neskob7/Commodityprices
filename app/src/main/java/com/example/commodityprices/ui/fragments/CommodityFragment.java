@@ -12,8 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import com.example.commodityprices.R;
-import com.example.commodityprices.core.BarchartCallback;
-import com.example.commodityprices.core.BarchartSdk;
+import com.example.commodityprices.core.AsyncCallback;
+import com.example.commodityprices.core.CommoditySdk;
 import com.example.commodityprices.core.entities.BarchartResult;
 import com.example.commodityprices.ui.CommodityAdapter;
 import com.example.commodityprices.ui.DetailsActivity;
@@ -88,9 +88,9 @@ public class CommodityFragment extends Fragment {
             @Override
             public void run() {
                 //Todo Threads
-                BarchartSdk.getInstance().getResults(new BarchartCallback<ArrayList<BarchartResult>>() {
+                CommoditySdk.getInstance().getBarchartResults(new AsyncCallback<ArrayList<BarchartResult>>() {
                     @Override
-                    public void onResultSuccess(ArrayList<BarchartResult> data) {
+                    public void onReceive(ArrayList<BarchartResult> data) {
 
                         if (data.size() == 0) {
                             //TODO Handle no results, Show No data text view -> data.size() = 0
@@ -120,7 +120,7 @@ public class CommodityFragment extends Fragment {
                                     String.valueOf(barchart.getFiftyTwoWkHigh())
                             );
 
-                            Log.d(TAG, "onResultSuccess: Commodity object created" +
+                            Log.d(TAG, "onReceive: Commodity object created" +
                                     commodity.getName() + " " + commodity.getSymbol() + " " +
                                     commodity.getPriceLow() + " " + commodity.getYearHigh());
 
@@ -145,7 +145,7 @@ public class CommodityFragment extends Fragment {
                     }
 
                     @Override
-                    public void onResultFailed(String error) {
+                    public void onFailed(String error) {
                         Log.e("Barchart UI", "ERROR = " + error);
                         //TODO Handle UI error, Show No data text view
                         progressBar.setVisibility(View.GONE);
