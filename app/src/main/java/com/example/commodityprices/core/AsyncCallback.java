@@ -4,7 +4,7 @@ package com.example.commodityprices.core;
  * Async Callback
  *
  * @param <T> callback data
- * @author Commodity Mandic
+ * @author Nesko Mandic
  */
 public interface AsyncCallback<T extends Object> {
 

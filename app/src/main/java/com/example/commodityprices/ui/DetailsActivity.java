@@ -1,5 +1,6 @@
 package com.example.commodityprices.ui;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,6 +19,7 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView tvPriceOpen;
     private TextView tvPriceClose;
     private TextView tvVolume;
+    private TextView tvNetChangeValue;
 
     private String priceUnits;
 
@@ -34,6 +36,7 @@ public class DetailsActivity extends AppCompatActivity {
         tvPriceOpen = findViewById(R.id.priceOpen);
         tvPriceClose = findViewById(R.id.priceClose);
         tvVolume = findViewById(R.id.volume);
+        tvNetChangeValue = findViewById(R.id.netChange2);
 
 
 
@@ -45,14 +48,23 @@ public class DetailsActivity extends AppCompatActivity {
 
             if (commodity != null) {
 
-                if(commodity.getName() == "Corn") {
+                if(commodity.getName().equals("Corn")) {
                     priceUnits = "c/bu";
                 }
 
                 tvName.setText("Commodity: " + commodity.getName());
                 tvSymbol.setText("Cbot symbol: " + commodity.getSymbol());
                 tvLastPrice.setText("Last price: " + commodity.getLastPrice() + " " + priceUnits);
-                tvNetChange.setText("Net change: " + commodity.getNetChange());
+
+                tvNetChange.setText("Net change: ");
+
+                if(commodity.getNetChange() > 0) {
+                    tvNetChangeValue.setTextColor(Color.GREEN);
+                }else {
+                    tvNetChangeValue.setTextColor(Color.RED);
+                }
+
+                tvNetChangeValue.setText(String.valueOf(commodity.getNetChange()));
                 tvPriceOpen.setText("Price open: " + commodity.getPriceOpen());
                 tvPriceClose.setText("Price close: " + commodity.getPriceClose());
                 tvVolume.setText("Volume: " + commodity.getVolume());

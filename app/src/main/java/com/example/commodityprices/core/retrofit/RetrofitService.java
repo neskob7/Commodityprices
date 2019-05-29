@@ -20,12 +20,12 @@ public class RetrofitService {
      */
     public static Retrofit getRetrofitInstance(String endpoint) {
 
-        if (retrofit == null) {
+//        if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(endpoint)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-        }
+//        }
 
         Log.d(TAG, "getRetrofitInstance Retrofit: " + retrofit.baseUrl());
         return retrofit;

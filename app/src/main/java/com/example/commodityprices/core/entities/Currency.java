@@ -3,6 +3,8 @@ package com.example.commodityprices.core.entities;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class Currency {
 
     @SerializedName("success")
@@ -45,4 +47,7 @@ public class Currency {
         return rates;
     }
 
+    public void setBase(String base) {
+        this.base = base;
+    }
 }

@@ -14,7 +14,7 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         tools:text="Name"
@@ -54,24 +54,41 @@
         android:layout_margin="5dp"
         android:padding="8dp"/>
 
-    <TextView
-        android:id="@+id/netChange"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/netChangeContainer"
         android:layout_below="@+id/lastPrice"
+        android:background="#323235"
         android:layout_marginTop="10dp"
+        android:layout_margin="5dp"
+        android:padding="8dp"
+        >
+    <TextView
+        android:id="@+id/netChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         tools:text="Net change"
         android:textSize="20sp"
-        android:background="#323235"
         android:textColor="#e3e3e8"
-        android:layout_margin="5dp"
-        android:padding="8dp"/>
+        />
+
+    <TextView
+        android:id="@+id/netChange2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Net change"
+        android:textSize="20sp"
+        />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/priceOpen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/netChange"
+        android:layout_below="@+id/netChangeContainer"
         android:layout_marginTop="10dp"
         tools:text="Price open"
         android:textSize="20sp"

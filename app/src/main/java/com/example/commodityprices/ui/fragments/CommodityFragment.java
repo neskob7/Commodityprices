@@ -115,7 +115,7 @@ public class CommodityFragment extends Fragment {
                                     barchart.getSymbol(),
                                     String.valueOf(barchart.getLow()),
                                     String.valueOf(barchart.getHigh()),
-                                    String.valueOf(barchart.getNetChange()),
+                                    barchart.getNetChange(),
                                     String.valueOf(barchart.getVolume()),
                                     String.valueOf(barchart.getFiftyTwoWkHigh())
                             );

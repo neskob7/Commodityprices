@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root_view2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginEnd="5dp"
+    android:padding="10dp"
+    android:background="@color/background_text_view"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/currencyPair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:textColor="@color/text_color"
+        android:textSize="16sp"
+        tools:text="TEST CURRENCY PAIR"
+        android:text="PAIR"/>
+
+    <TextView
+        android:id="@+id/currencyRate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/currencyPair"
+        android:textColor="#e3e3e8"
+        android:textSize="16sp"
+        tools:text="TEST CURRENCY RATE"
+        android:text="RATE"/>
+
+
+</RelativeLayout>
+

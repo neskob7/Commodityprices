@@ -13,12 +13,12 @@ public class Commodity implements Parcelable {
     private String symbol;
     private String priceLow;
     private String priceHigh;
-    private String netChange;
+    private double netChange;
     private String volume;
     private String yearHigh;
 
     public Commodity(String name, String lastPrice, String priceOpen, String priceClose,
-                     String symbol, String priceLow, String priceHigh, String netChange,
+                     String symbol, String priceLow, String priceHigh, double netChange,
                      String volume, String yearHigh) {
         this.name = name;
         this.lastPrice = lastPrice;
@@ -41,7 +41,7 @@ public class Commodity implements Parcelable {
         symbol = in.readString();
         priceLow = in.readString();
         priceHigh = in.readString();
-        netChange = in.readString();
+        netChange = in.readDouble();
         volume = in.readString();
         yearHigh = in.readString();
 
@@ -90,7 +90,7 @@ public class Commodity implements Parcelable {
         return priceHigh;
     }
 
-    public String getNetChange() {
+    public double getNetChange() {
         return netChange;
     }
 
@@ -117,7 +117,7 @@ public class Commodity implements Parcelable {
         dest.writeString(symbol);
         dest.writeString(priceLow);
         dest.writeString(priceHigh);
-        dest.writeString(netChange);
+        dest.writeDouble(netChange);
         dest.writeString(volume);
         dest.writeString(yearHigh);
 

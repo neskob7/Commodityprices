@@ -5,7 +5,11 @@ import android.util.Log;
 import com.example.commodityprices.core.entities.Barchart;
 import com.example.commodityprices.core.entities.BarchartResult;
 import com.example.commodityprices.core.entities.Constants;
+import com.example.commodityprices.core.entities.Currency;
+import com.example.commodityprices.core.entities.CurrencyRate;
+import com.example.commodityprices.core.entities.ExchangeRate;
 import com.example.commodityprices.core.retrofit.BarchartApiEndpoint;
+import com.example.commodityprices.core.retrofit.CurrencyApiEndPoint;
 import com.example.commodityprices.core.retrofit.RetrofitService;
 
 import java.util.ArrayList;
@@ -45,8 +49,10 @@ public class CommoditySdk {
 
     public void getBarchartResults(final AsyncCallback<ArrayList<BarchartResult>> callback) {
 
-        BarchartApiEndpoint service = RetrofitService.getRetrofitInstance(Constants.BASE_URL_BARCHART).create(BarchartApiEndpoint.class);
-        Call<Barchart> callable = service.getResults(Constants.API_KEY_BARCHART, Constants.SYMBOLS_BARCHART, Constants.FIELDS_BARCHART);
+        BarchartApiEndpoint service = RetrofitService.getRetrofitInstance(Constants.BARCHART_BASE_URL)
+                .create(BarchartApiEndpoint.class);
+        Call<Barchart> callable = service.getResults(Constants.BARCHART_API_KEY, Constants.BARCHART_SYMBOLS,
+                Constants.BARCHART_FIELDS);
 
         callable.enqueue(new Callback<Barchart>() {
             @Override
@@ -78,5 +84,53 @@ public class CommoditySdk {
             }
         });
     }
+
+    public void getCurrencyRates(final AsyncCallback<ArrayList<ExchangeRate>> callback) {
+
+        CurrencyApiEndPoint service = RetrofitService.getRetrofitInstance(Constants.CURRENCY_BASE_URL)
+                .create(CurrencyApiEndPoint.class);
+        Call<Currency> callable = service.getRates(Constants.CURRENCY_ACCESS_KEY, Constants.CURRENCY_SYMBOLS);
+
+        callable.enqueue(new Callback<Currency>() {
+            @Override
+            public void onResponse(Call<Currency> call, Response<Currency> response) {
+                //TODO ? CHECK response.body().setBase("USD");
+
+                Log.d(TAG, "onResponse: base " + response.body().getBase());
+                Log.d(TAG, "onResponse: body " + response.body().getRates());
+                Log.d(TAG, "onResponse: body " + response.body().getTimestamp());
+
+                Currency currency = response.body();
+
+                CurrencyRate currencyRate = currency.getRates();
+
+                String base = currency.getBase() + " / ";
+                Log.d(TAG, "onResponse: " + currencyRate.getUSD() + " " + currencyRate.getRSD());
+
+                ArrayList<ExchangeRate> exchangeRates = new ArrayList<>();
+
+                exchangeRates.add(new ExchangeRate(base +"USD", String.valueOf(currencyRate.getUSD())));
+                exchangeRates.add(new ExchangeRate(base +"RSD", String.valueOf(currencyRate.getRSD())));
+                exchangeRates.add(new ExchangeRate(base +"AED", String.valueOf(currencyRate.getAED())));
+                exchangeRates.add(new ExchangeRate(base +"GBP", String.valueOf(currencyRate.getGBP())));
+                exchangeRates.add(new ExchangeRate(base +"JPY", String.valueOf(currencyRate.getJPY())));
+                exchangeRates.add(new ExchangeRate(base +"CHF", String.valueOf(currencyRate.getCHF())));
+                exchangeRates.add(new ExchangeRate(base +"BRL", String.valueOf(currencyRate.getBRL())));
+                exchangeRates.add(new ExchangeRate(base +"ARS", String.valueOf(currencyRate.getARS())));
+                callback.onReceive(exchangeRates);
+
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Currency> call, Throwable t) {
+
+
+            }
+        });
+
+    }
+
 
 }
