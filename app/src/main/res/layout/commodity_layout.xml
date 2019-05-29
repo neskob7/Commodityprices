@@ -36,7 +36,8 @@
         android:layout_alignParentEnd="true"
         android:textColor="#e3e3e8"
         android:textSize="16sp"
-        tools:text="TEST OPEN" />
+        tools:text="TEST OPEN"
+        tools:ignore="RelativeOverlap" />
 
     <TextView
         android:id="@+id/priceClose"

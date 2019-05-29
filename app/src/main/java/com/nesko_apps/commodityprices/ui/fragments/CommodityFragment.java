@@ -1,4 +1,4 @@
-package com.example.commodityprices.ui.fragments;
+package com.nesko_apps.commodityprices.ui.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,13 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.example.commodityprices.R;
-import com.example.commodityprices.core.AsyncCallback;
-import com.example.commodityprices.core.CommoditySdk;
-import com.example.commodityprices.core.entities.BarchartResult;
-import com.example.commodityprices.ui.CommodityAdapter;
-import com.example.commodityprices.ui.DetailsActivity;
-import com.example.commodityprices.ui.entities.Commodity;
+import com.nesko_apps.commodityprices.R;
+import com.nesko_apps.commodityprices.core.AsyncCallback;
+import com.nesko_apps.commodityprices.core.CommoditySdk;
+import com.nesko_apps.commodityprices.core.entities.BarchartResult;
+import com.nesko_apps.commodityprices.ui.CommodityAdapter;
+import com.nesko_apps.commodityprices.ui.DetailsActivity;
+import com.nesko_apps.commodityprices.ui.entities.Commodity;
 
 import java.util.ArrayList;
 

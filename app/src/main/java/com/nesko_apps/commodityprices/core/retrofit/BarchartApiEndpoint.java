@@ -1,6 +1,6 @@
-package com.example.commodityprices.core.retrofit;
+package com.nesko_apps.commodityprices.core.retrofit;
 
-import com.example.commodityprices.core.entities.Barchart;
+import com.nesko_apps.commodityprices.core.entities.Barchart;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

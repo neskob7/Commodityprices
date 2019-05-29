@@ -20,17 +20,17 @@
         android:textColor="@color/text_color"
         android:textSize="16sp"
         tools:text="TEST CURRENCY PAIR"
-        android:text="PAIR"/>
+        android:text="@string/pair"/>
 
     <TextView
         android:id="@+id/currencyRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/currencyPair"
+        android:layout_toEndOf="@+id/currencyPair"
         android:textColor="#e3e3e8"
         android:textSize="16sp"
         tools:text="TEST CURRENCY RATE"
-        android:text="RATE"/>
+        android:text="@string/rate"/>
 
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.commodityprices.ui.entities;
+package com.nesko_apps.commodityprices.ui.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;

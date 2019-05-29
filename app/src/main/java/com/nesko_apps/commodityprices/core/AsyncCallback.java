@@ -1,4 +1,4 @@
-package com.example.commodityprices.core;
+package com.nesko_apps.commodityprices.core;
 
 /**
  * Async Callback

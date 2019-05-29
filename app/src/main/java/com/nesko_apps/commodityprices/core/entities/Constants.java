@@ -1,4 +1,4 @@
-package com.example.commodityprices.core.entities;
+package com.nesko_apps.commodityprices.core.entities;
 
 public class Constants {
 

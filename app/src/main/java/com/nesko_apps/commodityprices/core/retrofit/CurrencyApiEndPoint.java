@@ -1,6 +1,6 @@
-package com.example.commodityprices.core.retrofit;
+package com.nesko_apps.commodityprices.core.retrofit;
 
-import com.example.commodityprices.core.entities.Currency;
+import com.nesko_apps.commodityprices.core.entities.Currency;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

@@ -1,16 +1,16 @@
-package com.example.commodityprices.core;
+package com.nesko_apps.commodityprices.core;
 
 import android.util.Log;
 
-import com.example.commodityprices.core.entities.Barchart;
-import com.example.commodityprices.core.entities.BarchartResult;
-import com.example.commodityprices.core.entities.Constants;
-import com.example.commodityprices.core.entities.Currency;
-import com.example.commodityprices.core.entities.CurrencyRate;
-import com.example.commodityprices.core.entities.ExchangeRate;
-import com.example.commodityprices.core.retrofit.BarchartApiEndpoint;
-import com.example.commodityprices.core.retrofit.CurrencyApiEndPoint;
-import com.example.commodityprices.core.retrofit.RetrofitService;
+import com.nesko_apps.commodityprices.core.entities.Barchart;
+import com.nesko_apps.commodityprices.core.entities.BarchartResult;
+import com.nesko_apps.commodityprices.core.entities.Constants;
+import com.nesko_apps.commodityprices.core.entities.Currency;
+import com.nesko_apps.commodityprices.core.entities.CurrencyRate;
+import com.nesko_apps.commodityprices.core.entities.ExchangeRate;
+import com.nesko_apps.commodityprices.core.retrofit.BarchartApiEndpoint;
+import com.nesko_apps.commodityprices.core.retrofit.CurrencyApiEndPoint;
+import com.nesko_apps.commodityprices.core.retrofit.RetrofitService;
 
 import java.util.ArrayList;
 
@@ -45,7 +45,6 @@ public class CommoditySdk {
     private CommoditySdk() {
 
     }
-
 
     public void getBarchartResults(final AsyncCallback<ArrayList<BarchartResult>> callback) {
 
@@ -109,24 +108,19 @@ public class CommoditySdk {
 
                 ArrayList<ExchangeRate> exchangeRates = new ArrayList<>();
 
-                exchangeRates.add(new ExchangeRate(base +"USD", String.valueOf(currencyRate.getUSD())));
-                exchangeRates.add(new ExchangeRate(base +"RSD", String.valueOf(currencyRate.getRSD())));
-                exchangeRates.add(new ExchangeRate(base +"AED", String.valueOf(currencyRate.getAED())));
-                exchangeRates.add(new ExchangeRate(base +"GBP", String.valueOf(currencyRate.getGBP())));
-                exchangeRates.add(new ExchangeRate(base +"JPY", String.valueOf(currencyRate.getJPY())));
-                exchangeRates.add(new ExchangeRate(base +"CHF", String.valueOf(currencyRate.getCHF())));
-                exchangeRates.add(new ExchangeRate(base +"BRL", String.valueOf(currencyRate.getBRL())));
-                exchangeRates.add(new ExchangeRate(base +"ARS", String.valueOf(currencyRate.getARS())));
+                exchangeRates.add(new ExchangeRate(base + "USD", String.valueOf(currencyRate.getUSD())));
+                exchangeRates.add(new ExchangeRate(base + "RSD", String.valueOf(currencyRate.getRSD())));
+                exchangeRates.add(new ExchangeRate(base + "AED", String.valueOf(currencyRate.getAED())));
+                exchangeRates.add(new ExchangeRate(base + "GBP", String.valueOf(currencyRate.getGBP())));
+                exchangeRates.add(new ExchangeRate(base + "JPY", String.valueOf(currencyRate.getJPY())));
+                exchangeRates.add(new ExchangeRate(base + "CHF", String.valueOf(currencyRate.getCHF())));
+                exchangeRates.add(new ExchangeRate(base + "BRL", String.valueOf(currencyRate.getBRL())));
+                exchangeRates.add(new ExchangeRate(base + "ARS", String.valueOf(currencyRate.getARS())));
                 callback.onReceive(exchangeRates);
-
-
-
             }
 
             @Override
             public void onFailure(Call<Currency> call, Throwable t) {
-
-
             }
         });
 

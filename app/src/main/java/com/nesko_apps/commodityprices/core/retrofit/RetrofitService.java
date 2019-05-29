@@ -1,8 +1,6 @@
-package com.example.commodityprices.core.retrofit;
+package com.nesko_apps.commodityprices.core.retrofit;
 
 import android.util.Log;
-
-import com.example.commodityprices.core.entities.Constants;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

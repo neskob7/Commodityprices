@@ -1,4 +1,4 @@
-package com.example.commodityprices.ui;
+package com.nesko_apps.commodityprices.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.commodityprices.R;
-import com.example.commodityprices.ui.entities.Commodity;
+import com.nesko_apps.commodityprices.R;
+import com.nesko_apps.commodityprices.ui.entities.Commodity;
 
 import java.util.ArrayList;
 

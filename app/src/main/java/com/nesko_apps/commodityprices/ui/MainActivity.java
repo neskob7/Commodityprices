@@ -1,4 +1,4 @@
-package com.example.commodityprices.ui;
+package com.nesko_apps.commodityprices.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,9 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.commodityprices.R;
-import com.example.commodityprices.ui.fragments.CommodityFragment;
-import com.example.commodityprices.ui.fragments.CurrencyFragment;
+import com.nesko_apps.commodityprices.R;
+import com.nesko_apps.commodityprices.ui.fragments.CommodityFragment;
+import com.nesko_apps.commodityprices.ui.fragments.CurrencyFragment;
 
 public class MainActivity extends AppCompatActivity {
 

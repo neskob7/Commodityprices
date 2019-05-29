@@ -1,4 +1,4 @@
-package com.example.commodityprices.ui.fragments;
+package com.nesko_apps.commodityprices.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,15 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
-import com.example.commodityprices.R;
-import com.example.commodityprices.core.AsyncCallback;
-import com.example.commodityprices.core.CommoditySdk;
-import com.example.commodityprices.core.entities.CurrencyRate;
-import com.example.commodityprices.core.entities.ExchangeRate;
-import com.example.commodityprices.ui.CommodityAdapter;
-import com.example.commodityprices.ui.CurrencyAdapter;
+import com.nesko_apps.commodityprices.R;
+import com.nesko_apps.commodityprices.core.AsyncCallback;
+import com.nesko_apps.commodityprices.core.CommoditySdk;
+import com.nesko_apps.commodityprices.core.entities.ExchangeRate;
+import com.nesko_apps.commodityprices.ui.CurrencyAdapter;
 
 import java.util.ArrayList;
 

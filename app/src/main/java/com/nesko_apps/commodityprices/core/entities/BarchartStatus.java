@@ -1,5 +1,5 @@
 
-package com.example.commodityprices.core.entities;
+package com.nesko_apps.commodityprices.core.entities;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

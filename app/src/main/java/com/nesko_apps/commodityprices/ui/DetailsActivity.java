@@ -1,13 +1,14 @@
-package com.example.commodityprices.ui;
+package com.nesko_apps.commodityprices.ui;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.commodityprices.R;
-import com.example.commodityprices.ui.entities.Commodity;
+import com.nesko_apps.commodityprices.R;
+import com.nesko_apps.commodityprices.ui.entities.Commodity;
 
 public class DetailsActivity extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class DetailsActivity extends AppCompatActivity {
     private String priceUnits;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
