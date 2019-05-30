@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.nesko_apps.commodityprices.R;
 import com.nesko_apps.commodityprices.core.AsyncCallback;
@@ -27,7 +28,7 @@ public class CurrencyFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private CurrencyAdapter currencyAdapter;
 
-//    private ProgressBar progressBar;
+    private ProgressBar progressBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class CurrencyFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView2.setLayoutManager(layoutManager);
 
-//        progressBar = view.findViewById(R.id.progress_bar2);
+        progressBar = view.findViewById(R.id.progress_bar2);
 
         currencyAdapter = new CurrencyAdapter(getContext());
         recyclerView2.setAdapter(currencyAdapter);
@@ -59,12 +60,14 @@ public class CurrencyFragment extends Fragment {
                 CommoditySdk.getInstance().getCurrencyRates(new AsyncCallback<ArrayList<ExchangeRate>>() {
                     @Override
                     public void onReceive(ArrayList<ExchangeRate> data) {
+                        progressBar.setVisibility(View.GONE);
                         currencyAdapter.refreshAdapter(data);
                     }
 
                     @Override
                     public void onFailed(String error) {
 
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
             }

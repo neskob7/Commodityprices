@@ -20,6 +20,7 @@
         android:textColor="@color/text_color"
         android:textSize="16sp"
         tools:text="TEST CURRENCY PAIR"
+        android:layout_marginRight="20dp"
         android:text="@string/pair"/>
 
     <TextView

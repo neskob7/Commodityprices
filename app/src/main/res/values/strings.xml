@@ -2,7 +2,7 @@
     <string name="app_name">Commodity prices</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="last_price">Last Price:</string>
+    <string name="net_change">Net change:</string>
     <string name="commodity_prices">Commodity prices</string>
     <string name="currency_exchange">Currency exchange</string>
     <string name="pair">PAIR</string>

@@ -21,10 +21,22 @@
         tools:text="TEST NAME" />
 
     <TextView
-        android:id="@+id/lastPrice"
+        android:id="@+id/netChangeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/name"
+        android:textColor="#e3e3e8"
+        android:textSize="16sp"
+        android:text="Net Change:"
+        tools:text="TEST LAST PRICE" />
+
+    <TextView
+        android:id="@+id/netChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/netChangeText"
+        android:layout_toRightOf="@+id/netChangeText"
+        android:layout_marginStart="3dp"
         android:textColor="#e3e3e8"
         android:textSize="16sp"
         tools:text="TEST LAST PRICE" />

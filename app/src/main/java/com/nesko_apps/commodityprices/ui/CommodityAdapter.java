@@ -1,6 +1,7 @@
 package com.nesko_apps.commodityprices.ui;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -54,7 +55,12 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
     public void onBindViewHolder(@NonNull CommodityViewHolder viewHolder, int position) {
         Commodity commodity = commodities.get(position);
         viewHolder.name.setText(commodity.getName());
-        viewHolder.lastPrice.setText(context.getString(R.string.last_price) + commodity.getLastPrice());
+        viewHolder.netChange.setText(String.valueOf(commodity.getNetChange()));
+        if(commodity.getNetChange() > 0) {
+            viewHolder.netChange.setTextColor(Color.GREEN);
+        }else {
+            viewHolder.netChange.setTextColor(Color.RED);
+        }
         viewHolder.priceOpen.setText("Open " + commodity.getPriceOpen());
         viewHolder.priceClose.setText("Close " + commodity.getPriceClose());
 
@@ -69,7 +75,7 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
     public static class CommodityViewHolder extends RecyclerView.ViewHolder {
 
         private TextView name;
-        private TextView lastPrice;
+        private TextView netChange;
         private RelativeLayout rootView;
         private TextView priceOpen;
         private TextView priceClose;
@@ -80,7 +86,7 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
-            lastPrice = itemView.findViewById(R.id.lastPrice);
+            netChange = itemView.findViewById(R.id.netChange);
             rootView = itemView.findViewById(R.id.root_view);
             priceClose = itemView.findViewById(R.id.priceClose);
             priceOpen = itemView.findViewById(R.id.priceOpen);
