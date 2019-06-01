@@ -63,7 +63,7 @@ public class CommoditySdk {
                     return;
                 }
 
-                ArrayList<BarchartResult> results = (ArrayList<BarchartResult>) response.body().getResults();
+                ArrayList<BarchartResult> results = response.body().getResults();
 
                 if (results == null) {
                     results = new ArrayList<>();
@@ -93,7 +93,6 @@ public class CommoditySdk {
         callable.enqueue(new Callback<Currency>() {
             @Override
             public void onResponse(Call<Currency> call, Response<Currency> response) {
-                //TODO ? CHECK response.body().setBase("USD");
 
                 Log.d(TAG, "onResponse: base " + response.body().getBase());
                 Log.d(TAG, "onResponse: body " + response.body().getRates());

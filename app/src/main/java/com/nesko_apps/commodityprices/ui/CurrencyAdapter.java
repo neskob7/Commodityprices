@@ -14,6 +14,7 @@ import com.nesko_apps.commodityprices.core.entities.ExchangeRate;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder> {
 
     private Context context;
@@ -28,7 +29,7 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
     @Override
     public CurrencyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
 
-        View view = (View) LayoutInflater.from(context).inflate(R.layout.currency_layout,
+        View view = LayoutInflater.from(context).inflate(R.layout.currency_layout,
                 viewGroup, false);
 
         final CurrencyAdapter.CurrencyViewHolder currencyViewHolder = new CurrencyViewHolder(view);

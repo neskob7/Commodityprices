@@ -6,6 +6,7 @@ package com.nesko_apps.commodityprices.core;
  * @param <T> callback data
  * @author Nesko Mandic
  */
+@SuppressWarnings("TypeParameterExplicitlyExtendsObject")
 public interface AsyncCallback<T extends Object> {
 
     /**

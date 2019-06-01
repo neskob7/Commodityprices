@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.nesko_apps.commodityprices.R;
 import com.nesko_apps.commodityprices.core.AsyncCallback;
@@ -56,8 +57,6 @@ public class CommodityFragment extends Fragment {
         commodityAdapter = new CommodityAdapter(getContext());
         recyclerView.setAdapter(commodityAdapter);
 
-        //TODO Programmatically change visibility
-        //Hint setVisibility(View.VISIBLE);
 
         Log.d("PROGRES ", "onCreateView: START " + System.currentTimeMillis());
 
@@ -67,7 +66,6 @@ public class CommodityFragment extends Fragment {
         commodityAdapter.setCommodityListener(new CommodityAdapter.CommodityListener() {
             @Override
             public void onItemClick(int position) {
-                //TODO Open Extended details info
 
                 Intent intent = new Intent(getActivity(), DetailsActivity.class);
                 intent.putExtra("commodity", commodities.get(position));
@@ -80,19 +78,19 @@ public class CommodityFragment extends Fragment {
 
         return view;
     }
-
-    //TODO: Probaj novu klasu za cuvanje UI podataka
     private void requestResults() {
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                //Todo Threads
+
                 CommoditySdk.getInstance().getBarchartResults(new AsyncCallback<ArrayList<BarchartResult>>() {
                     @Override
                     public void onReceive(ArrayList<BarchartResult> data) {
 
                         if (data.size() == 0) {
+
+                            Toast.makeText(getContext(), "NO DATA AVAILABLE", Toast.LENGTH_LONG).show();
                             //TODO Handle no results, Show No data text view -> data.size() = 0
                             return;
                         }
@@ -148,6 +146,8 @@ public class CommodityFragment extends Fragment {
                     public void onFailed(String error) {
                         Log.e("Barchart UI", "ERROR = " + error);
                         //TODO Handle UI error, Show No data text view
+                        Toast.makeText(getContext(), "NO DATA AVAILABLE", Toast.LENGTH_LONG).show();
+
                         progressBar.setVisibility(View.GONE);
                     }
                 });

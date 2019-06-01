@@ -50,8 +50,14 @@ public class DetailsActivity extends AppCompatActivity {
 
             if (commodity != null) {
 
-                if(commodity.getName().equals("Corn")) {
+                if(commodity.getName().equals("Corn")|commodity.getName().equals("Wheat")
+                        |commodity.getName().equals("Soybeans")|commodity.getName().equals("Oats")) {
                     priceUnits = "c/bu";
+                }
+                if(commodity.getName().equals("Soybean Meal")) {
+                    priceUnits = "$/short tonne";
+                }else {
+                    priceUnits = "c/hundredweight";
                 }
 
                 tvName.setText("Commodity: " + commodity.getName());

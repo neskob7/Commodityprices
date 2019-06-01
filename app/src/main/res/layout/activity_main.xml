@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/button_selector"
-            android:text="@string/commodity_prices" />
+            android:text="@string/commodity_prices"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/btnCurrency"
@@ -27,7 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/button_selector"
-            android:text="@string/currency_exchange" />
+            android:text="@string/currency_exchange"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
     <FrameLayout

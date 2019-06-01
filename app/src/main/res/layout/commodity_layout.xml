@@ -27,7 +27,7 @@
         android:layout_below="@+id/name"
         android:textColor="#e3e3e8"
         android:textSize="16sp"
-        android:text="Net Change:"
+        android:text="@string/net_change"
         tools:text="TEST LAST PRICE" />
 
     <TextView
@@ -35,7 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/netChangeText"
-        android:layout_toRightOf="@+id/netChangeText"
+        android:layout_toEndOf="@+id/netChangeText"
         android:layout_marginStart="3dp"
         android:textColor="#e3e3e8"
         android:textSize="16sp"

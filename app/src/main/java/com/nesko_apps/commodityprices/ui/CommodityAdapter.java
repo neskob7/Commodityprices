@@ -1,5 +1,6 @@
 package com.nesko_apps.commodityprices.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -31,12 +32,10 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
     @Override
     public CommodityViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
-        View view = (View) LayoutInflater.from(context).inflate(R.layout.commodity_layout,
+        View view = LayoutInflater.from(context).inflate(R.layout.commodity_layout,
                 viewGroup, false);
 
         final CommodityViewHolder commodityViewHolder = new CommodityViewHolder(view);
-
-        //todo click listener by position
 
         commodityViewHolder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +50,7 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
         return commodityViewHolder;
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull CommodityViewHolder viewHolder, int position) {
         Commodity commodity = commodities.get(position);
@@ -64,7 +64,6 @@ public class CommodityAdapter extends RecyclerView.Adapter<CommodityAdapter.Comm
         viewHolder.priceOpen.setText("Open " + commodity.getPriceOpen());
         viewHolder.priceClose.setText("Close " + commodity.getPriceClose());
 
-        //TODO add price close and open
     }
 
     @Override
