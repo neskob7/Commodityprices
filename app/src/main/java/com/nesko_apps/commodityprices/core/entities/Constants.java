@@ -5,7 +5,7 @@ public class Constants {
     //https://marketdata.websol.barchart.com/getQuote.json?apikey=13084450b346c9dce6bbb63c2924e9b7&symbols=ZCK19
     public static final String BARCHART_API_KEY = "13084450b346c9dce6bbb63c2924e9b7";
     public static final String BARCHART_BASE_URL = "https://marketdata.websol.barchart.com";
-    public static final String BARCHART_SYMBOLS = "ZWN19, ZCN19, ZSN19, ZMN19, ZRN19, ZON19";
+    public static final String BARCHART_SYMBOLS = "ZWU20, ZCU20, ZSU20, ZMU20, ZRU20, ZOU20";
     //todo add dynamic date selection
     public static final String BARCHART_FIELDS = "fiftyTwoWkHigh";
 

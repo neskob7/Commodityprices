@@ -60,6 +60,8 @@ public class CurrencyFragment extends Fragment {
                 CommoditySdk.getInstance().getCurrencyRates(new AsyncCallback<ArrayList<ExchangeRate>>() {
                     @Override
                     public void onReceive(ArrayList<ExchangeRate> data) {
+
+
                         progressBar.setVisibility(View.GONE);
                         currencyAdapter.refreshAdapter(data);
                     }

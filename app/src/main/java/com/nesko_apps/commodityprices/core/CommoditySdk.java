@@ -60,6 +60,7 @@ public class CommoditySdk {
                 if (response.body() == null) {
                     Log.e(TAG, "Response Success, response body not initialized");
                     callback.onReceive(new ArrayList<BarchartResult>());
+
                     return;
                 }
 
@@ -120,6 +121,8 @@ public class CommoditySdk {
 
             @Override
             public void onFailure(Call<Currency> call, Throwable t) {
+                Log.e(TAG, "Response Failed, Error = " + t.getMessage());
+                callback.onFailed(t.getLocalizedMessage());
             }
         });
 
